@@ -1,8 +1,8 @@
 # scRNAseq-repo
 
-This repository contains the code for the main analyses performed in the ["Comparative Analysis of Single Cell RNA Sequencing Technologies" paper](https://doi.org/10.1101/2024.06.18.599579) (De Simone and Hoover, et. al).
+This repository contains the code for the main analyses performed in the ["Comparative Analysis of Single Cell RNA Sequencing Technologies" paper](https://doi.org/10.1101/2024.06.18.599579) (**De Simone and Hoover, et. al**).
 
-Main editors for this repo are Jonathan Hoover and Daniel Le. For correspondence regarding code please contact Daniel Le (led13@gene.com). For correspondence regarding experimental design please contact Spyros Darmanis (darmanis@gene.com).
+Main editors for this repo are **Jonathan Hoover** and **Daniel Le**. For correspondence regarding code please contact Daniel Le (led13@gene.com). For correspondence regarding experimental design please contact Spyros Darmanis (darmanis@gene.com).
 
 scRNA kits processed in this project include:
 
