@@ -18,6 +18,8 @@ scRNA kits processed in this project include:
 
 ## Reproducibility
 
+### *Conda Environments*
+
 Analyses were performed using the mamba environment shown in `./mamba_environments/scanpy-default-mamba.yml`. To install this virtual environment using miniforge, make sure miniforge is installed (see https://github.com/conda-forge/miniforge) and then execute the following:
 
 First, clone this directory to your desired local directory (make sure git is installed)
@@ -34,9 +36,17 @@ cd </path/to/scRNAseq-repo>
 conda env create -f ./mamba_environments/scanpy-default-mamba.yml -n <envname>
 ```
 
-After setting up the conda environment, some notebooks can be be run directly using data deposited on the CZ Biohub's CellxGene repo (see the **Resources** section below). Some just act as reference for how data was generated. Each notebook will mention whether it can be rerun directly using the resources made available within this repo. 
+### *Annotated AnnData Objects*
+
+After setting up the conda environment, some notebooks can be be run directly using data deposited on the CZ Biohub's CellxGene repo (see the *`Resources`* section below). Some just act as reference for how data was generated. Each notebook will mention whether it can be rerun directly using the resources made available within this repo. 
 
 **For those that are able to be run using the AnnData objects uploaded to CellxGene, please run the `notebooks/CellxGene_Download.ipynb` notebook first. It will generate a `results/anndata_objects/` directory containing all the annotated .h5ad files for each kit along with the harmony integrated .h5ad file.**
+
+### *scanpy-compatible Broad Reference Dataset*
+
+The raw dataset used to train annotation models (CellTypist and Seurat's Label Transfer) can be downloaded and converted to a `.h5ad` file with the `notebooks/BroadInstituteReference_convertRDStoH5.Rmd` file. This reference dataset is hosted in the SeuratData package (https://github.com/satijalab/seurat-data) and is from a 2020 comparative analysis of non-commercial single-cell RNA sequencing technologies on PBMCs (https://www.nature.com/articles/s41587-020-0465-8). 
+
+The data was processed and subsampled for use and training according to the `notebooks/analysis/ProcessandFilterCells.ipynb` notebook. It was then used to train two separate annotation models as described in our paper (see the *`Resources`* section below).
 
 ## Resources
 
