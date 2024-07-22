@@ -1,0 +1,39 @@
+---
+title: "Convert Broad Reference from .RDS to .h5ad file"
+output: html_notebook
+---
+
+This notebook converts the Broad Institute's large scale PBMC dataset (titled 'pbmcsca'; see https://github.com/satijalab/seurat-data) from an .RDS file to a .h5ad file that can be used as a reference for cell annotation with our project.
+
+The user needs to specify the output location and file/name with `h5Seurat_file`, and it will generate an output of a .h5ad file in the same directory. The .h5ad file is the file to be used as the reference file in other notebooks.
+
+```{r}
+##USER DEFINED OUTPUT SEURAT FILE
+h5Seurat_file = '/path/to/pbmcsca_reference.h5Seurat' ##INSERT HERE
+```
+
+```{r}
+##load and install necessary packages
+# remotes::install_github("satijalab/seurat", "seurat5", upgrade = "always")
+# devtools::install_github('satijalab/seurat-data', upgrade = "always")
+# remotes::install_github("mojaveazure/seurat-disk", upgrade="always")
+library(Seurat)
+library(SeuratData)
+library(SeuratDisk)
+```
+
+```{r}
+
+##Install Broad Institute Data
+InstallData("pbmcsca")
+data("pbmcsca")
+
+##Update Seurat Object to newer version so we can save
+pbmcsca = UpdateSeuratObject(pbmcsca)
+
+##create temp h5Seurat file
+SaveH5Seurat(pbmcsca, filename = h5Seurat_file, overwrite=TRUE)
+
+##convert to normal h5ad for AnnData reading in scanpy
+Convert(h5Seurat_file, dest = "h5ad", overwrite=TRUE)
+```
